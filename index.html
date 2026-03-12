@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitFight ⚔️ GitHub Profile Battles</title>
+  <meta name="description" content="Pit two GitHub profiles against each other in an epic RPG-style battle!">
+  <meta property="og:title" content="GitFight ⚔️ GitHub Profile Battles">
+  <meta property="og:description" content="Enter two GitHub usernames and watch them fight! Who's the strongest dev?">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#a78bfa">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+  <!-- ====== INTRO ====== -->
+  <section id="intro" class="screen active">
+    <div class="intro-wrap">
+      <h1 class="title glitch" data-text="GITFIGHT">GITFIGHT</h1>
+      <p class="tagline">⚔️ GitHub Profile Battles ⚔️</p>
+
+      <form id="fight-form" class="fight-form">
+        <div class="input-side">
+          <span class="player-tag red">P1</span>
+          <input type="text" id="input-p1" placeholder="username" required autocomplete="off" spellcheck="false">
+        </div>
+
+        <span class="vs-label">VS</span>
+
+        <div class="input-side">
+          <span class="player-tag blue">P2</span>
+          <input type="text" id="input-p2" placeholder="username" required autocomplete="off" spellcheck="false">
+        </div>
+
+        <button type="submit" class="btn-fight">FIGHT !</button>
+      </form>
+
+      <p id="error" class="error-msg"></p>
+      <p class="hint">try: torvalds vs gvanrossum 👀</p>
+    </div>
+  </section>
+
+  <!-- ====== LOADING ====== -->
+  <section id="loading" class="screen">
+    <div class="loader-wrap">
+      <div class="spinner"></div>
+      <p class="loader-text">Fetching fighters…</p>
+    </div>
+  </section>
+
+  <!-- ====== ARENA ====== -->
+  <section id="arena" class="screen">
+    <div class="arena-wrap">
+      <div class="fighter left" id="fighter-1">
+        <img class="avatar" id="av1" src="" alt="player 1">
+        <p class="fname" id="name1"></p>
+        <div class="hp-wrap"><div class="hp-bar" id="hp1"></div></div>
+        <span class="hp-num" id="hpn1">500</span>
+      </div>
+
+      <div class="arena-mid">
+        <p class="round-num" id="round-num"></p>
+        <p class="round-name" id="round-name"></p>
+        <p class="attack-text" id="attack-text"></p>
+        <p class="stat-cmp" id="stat-cmp"></p>
+      </div>
+
+      <div class="fighter right" id="fighter-2">
+        <img class="avatar" id="av2" src="" alt="player 2">
+        <p class="fname" id="name2"></p>
+        <div class="hp-wrap"><div class="hp-bar" id="hp2"></div></div>
+        <span class="hp-num" id="hpn2">500</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== RESULT ====== -->
+  <section id="result" class="screen">
+    <canvas id="confetti"></canvas>
+    <div class="result-wrap">
+      <p class="crown">🏆 WINNER 🏆</p>
+      <img class="winner-av" id="winner-av" src="" alt="winner">
+      <h2 class="winner-name" id="winner-name"></h2>
+
+      <table class="recap">
+        <thead>
+          <tr>
+            <th>Round</th>
+            <th id="rh1">P1</th>
+            <th id="rh2">P2</th>
+            <th>Winner</th>
+          </tr>
+        </thead>
+        <tbody id="recap-body"></tbody>
+      </table>
+
+      <div class="result-btns">
+        <button class="btn btn-rematch" id="btn-rematch">🔄 Rematch</button>
+        <button class="btn btn-new" id="btn-new">⚔️ New Fight</button>
+        <button class="btn btn-share" id="btn-share">📤 Share</button>
+      </div>
+    </div>
+  </section>
+
+  <noscript><p style="color:#fff;text-align:center;padding:3rem">Enable JavaScript to use GitFight.</p></noscript>
+
+  <script src="js/api.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
